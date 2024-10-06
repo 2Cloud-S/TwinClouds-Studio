@@ -5,8 +5,20 @@ import { ArrowLeft, Check, HelpCircle, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+// Define the type for the form data
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  projectType: string;
+  budget: string;
+  timeline: string;
+  description: string;
+  features: string[]; // Change this from never[] to string[]
+}
+
 export default function ProjectBrief() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     company: '',
@@ -14,7 +26,7 @@ export default function ProjectBrief() {
     budget: '',
     timeline: '',
     description: '',
-    features: []
+    features: [] // Initialize as an empty array of strings
   })
 
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
